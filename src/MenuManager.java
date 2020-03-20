@@ -1,7 +1,7 @@
 
-public class HelloWorld {
+public class MenuManager {
 	public static void main(String[] args) {
-		System.out.println("¡ß Book Rental Management System ¡ß");
+		System.out.println("~ Book Rental Management System ~");
 		System.out.println(" 1. Add Customer");
 		System.out.println(" 2. Delete Customer");
 		System.out.println(" 3. Edit Customer");
