@@ -41,9 +41,10 @@ public class MenuManager {
 		System.out.print("Phone number : ");
 		String customerPhone = input.next();
 		System.out.print("Borrowed Book Name : ");
-		String bookName = input.next();
+		String bookName = input.nextLine();
+		String js = input.nextLine();
 		System.out.print("Loan Period : ");
-		String loanPeriod = input.next();
+		String loanPeriod = input.nextLine();
 	}
 	public static void deleteCustomer() {
 		Scanner input = new Scanner(System.in);
