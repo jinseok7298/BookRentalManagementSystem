@@ -38,10 +38,12 @@ public class MenuManager {
 		int customerid = input.nextInt();
 		System.out.print("Customer Name : ");
 		String customerName = input.next();
-		System.out.print("Email address : ");
-		String customerEmail = input.next();
 		System.out.print("Phone number : ");
 		String customerPhone = input.next();
+		System.out.print("Borrowed Book Name : ");
+		String bookName = input.next();
+		System.out.print("Loan Period : ");
+		String loanPeriod = input.next();
 	}
 	public static void deleteCustomer() {
 		Scanner input = new Scanner(System.in);
