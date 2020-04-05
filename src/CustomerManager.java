@@ -17,10 +17,10 @@ public class CustomerManager {
 		
 		System.out.print("Phone number : ");
 		customer.phone = input.next();
-		
+
+		String js = input.nextLine();
 		System.out.print("Borrowed Book Name : ");
 		customer.book = input.nextLine();
-		String js = input.nextLine();
 		//String js = input.nextLine();를 입력한 이유는 nextLine 이용시 엔터키를 문장으로 인식되는 오류 막으려고.
 		System.out.print("Loan Period : ");
 		customer.period = input.nextLine();
@@ -65,10 +65,12 @@ public class CustomerManager {
 					customer.phone = input.next();
 				}
 				else if(num == 4) {
+					String js = input.nextLine();
 					System.out.print("Borrowed Book Name : ");
 					customer.book = input.nextLine();
 				}
 				else if(num == 5) {
+					String js = input.nextLine();
 					System.out.print("Loan Period : ");
 					customer.period = input.nextLine();
 				}
