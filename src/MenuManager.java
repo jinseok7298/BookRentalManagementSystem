@@ -3,66 +3,33 @@ import java.util.Scanner;
 public class MenuManager {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		int num = 5;
+		CustomerManager customerManager = new CustomerManager(input);
+		int num = -1;
 
-		while(num != 6) {
+		while(num != 5) {
 			System.out.println("~ Book Rental Management System ~");
 			System.out.println(" 1. Add Customer");
 			System.out.println(" 2. Delete Customer");
 			System.out.println(" 3. Edit Customer");
 			System.out.println(" 4. View Customer");
-			System.out.println(" 5. Show a menu");
-			System.out.println(" 6. Exit");
-			System.out.println("Select one menu between 1 - 6 : ");
+			System.out.println(" 5. Exit");
+			System.out.println("Select one menu between 1 - 5 : ");
 			num = input.nextInt();
 			if(num == 1) {
-				addCustomer();
+				customerManager.addCustomer();
 			}
 			else if(num == 2) {
-				deleteCustomer();
+				customerManager.deleteCustomer();
 			}
 			else if(num == 3) {
-				editCustomer();
+				customerManager.editCustomer();
 			}
 			else if(num == 4) {
-				viewCustomer();
+				customerManager.viewCustomer();
 			}
 			else {
 				continue;
 			}
 		}
 	}
-	public static void addCustomer() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Customer ID : ");
-		int customerid = input.nextInt();
-		System.out.print("Customer Name : ");
-		String customerName = input.next();
-		System.out.print("Phone number : ");
-		String customerPhone = input.next();
-		System.out.print("Borrowed Book Name : ");
-		String bookName = input.nextLine();
-		String js = input.nextLine();
-		System.out.print("Loan Period : ");
-		String loanPeriod = input.nextLine();
-	}
-	public static void deleteCustomer() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Customer ID : ");
-		int customerid = input.nextInt();
-		
-	}
-	public static void editCustomer() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Customer ID : ");
-		int customerid = input.nextInt();
-		
-	}
-	public static void viewCustomer() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Customer ID : ");
-		int customerid = input.nextInt();
-		
-	}
-
 }	
