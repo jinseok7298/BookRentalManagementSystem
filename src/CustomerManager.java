@@ -41,7 +41,41 @@ public class CustomerManager {
 		System.out.print("Customer ID : ");
 		int customerid = input.nextInt();
 		if (customer.id == customerid) {
-			System.out.println("the customer to be edited is " + customerid);
+			int num = -1;
+			while(num != 6) {
+				System.out.println("~ Customer Info Edit Menu ~");
+				System.out.println(" 1. Edit Id");
+				System.out.println(" 2. Edit Name");
+				System.out.println(" 3. Edit Phone");
+				System.out.println(" 4. Edit Book");
+				System.out.println(" 5. Edit Period");
+				System.out.println(" 6. Exit");
+				System.out.println("Select one menu between 1 - 6 : ");
+				num = input.nextInt();
+				if(num == 1) {
+					System.out.print("Customer ID : ");
+					customer.id = input.nextInt();
+				}
+				else if(num == 2) {
+					System.out.print("Customer Name : ");
+					customer.name = input.next();
+				}
+				else if(num == 3) {
+					System.out.print("Phone number : ");
+					customer.phone = input.next();
+				}
+				else if(num == 4) {
+					System.out.print("Borrowed Book Name : ");
+					customer.book = input.nextLine();
+				}
+				else if(num == 5) {
+					System.out.print("Loan Period : ");
+					customer.period = input.nextLine();
+				}
+				else {
+					continue;
+				}
+			}
 		}
 	}
 	public void viewCustomer() {
