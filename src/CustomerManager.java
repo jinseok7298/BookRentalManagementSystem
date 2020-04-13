@@ -40,6 +40,7 @@ public class CustomerManager {
 		}
 		if (index >= 0) { //입력했던 고객의 id가 일치해서 index에 i의 값이 저장될 시 실행하여 id일치하는 고객 삭제.
 			customers.remove(index);
+			Customer.numcustomersRegistered--;
 			System.out.println("the customer" + customerid + "is deleted");
 		}
 		else {
@@ -97,6 +98,7 @@ public class CustomerManager {
 	public void viewCustomers() {
 //		System.out.print("Customer ID : ");
 //		int customerid = input.nextInt(); //새로운 변수 값 입력.
+		System.out.println("# of registered customers : " + Customer.numcustomersRegistered);
 		for (int i = 0; i<customers.size(); i++) {
 			customers.get(i).printInfo(); //배열안에 있는 customer의 정보들을 출력.
 		}
