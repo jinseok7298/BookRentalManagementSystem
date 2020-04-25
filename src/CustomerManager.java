@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import customer.Customer;
+import customer.CustomerKind;
 import customer.NonMemberCustomer;
+import customer.VipCustomer;
+
 
 public class CustomerManager {
 	ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -14,19 +17,26 @@ public class CustomerManager {
 	public void addCustomer() { //Scanner을 위에서 선언했으므로 다시 안 써도 된다.
 		int kind = 0;
 		Customer customer;
-		while(kind != 1 && kind != 2) {
-			System.out.print("1 for Member,");
-			System.out.print(" 2 for Non-Member,");
-			System.out.print(" Select num for Customer kind between 1 and 2 : ");
+		while(kind != 1 && kind != 2) { //Customer 클래스에 고객을 입력할지, NonMemberCustomer 클래스에 입력할지 결정.
+			System.out.println(" 1 for Member");
+			System.out.println(" 2 for Non-Member");
+			System.out.println(" 3 for Vip");
+			System.out.print("Select num 1, 2, or 3 for Customer kind : ");
 			kind = input.nextInt();
-			if (kind == 1) {
-				customer = new Customer();
+			if (kind == 1) { //1번 선택시 kind가 member인 customer 클래스를 선택
+				customer = new Customer(CustomerKind.Member);
 				customer.getUserInput(input);
 				customers.add(customer); //입력한 customer 값을 배열 customers에 저장.
 				break;
 			}
-			else if(kind == 2) {
-				customer = new NonMemberCustomer();
+			else if(kind == 2) { //2번 선택시 kind가 nonmember인 nonmembercustomer 클래스 선택.
+				customer = new NonMemberCustomer(CustomerKind.Nonmember);
+				customer.getUserInput(input);
+				customers.add(customer);
+				break;
+			}
+			else if(kind == 3) { 
+				customer = new VipCustomer(CustomerKind.Vip);
 				customer.getUserInput(input);
 				customers.add(customer);
 				break;
@@ -41,7 +51,7 @@ public class CustomerManager {
 		int customerid = input.nextInt();//새로운 입력할 변수 선언
 		int index = -1; //index값 설정.
 		for (int i = 0; i<customers.size(); i++) {
-			if (customers.get(i).getId() == customerid) { //입력 값과 추가했던 고객 id 일치시 index엔 i값 저장
+			if (customers.get(i).getId() == customerid) { //입력 값과 추가했던 고객 id 일치시 index엔 i값 저장 //getId()함수 사용.
 				index = i;
 				break;
 			}
