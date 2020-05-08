@@ -7,29 +7,34 @@ public class MenuManager {
 		int num = -1;
 
 		while(num != 5) {
-			System.out.println("~ Book Rental Management System ~");
-			System.out.println(" 1. Add Customer");
-			System.out.println(" 2. Delete Customer");
-			System.out.println(" 3. Edit Customer");
-			System.out.println(" 4. View Customers");
-			System.out.println(" 5. Exit");
-			System.out.println("Select one menu between 1 - 5 : ");
+			showMenu();
 			num = input.nextInt();
-			if(num == 1) {
-				customerManager.addCustomer(); //CustomerManager class의 addCustomer을 실행한다.
-			}
-			else if(num == 2) {
+			switch(num) {
+			case 1:
+				customerManager.addCustomer();
+				break;
+			case 2:
 				customerManager.deleteCustomer();
-			}
-			else if(num == 3) {
+				break;
+			case 3:
 				customerManager.editCustomer();
-			}
-			else if(num == 4) {
+				break;
+			case 4:
 				customerManager.viewCustomers();
-			}
-			else {
+				break;
+			default:
 				continue;
 			}
 		}
+	}
+	
+	public static void showMenu() {
+		System.out.println("~ Book Rental Management System ~");
+		System.out.println(" 1. Add Customer");
+		System.out.println(" 2. Delete Customer");
+		System.out.println(" 3. Edit Customer");
+		System.out.println(" 4. View Customers");
+		System.out.println(" 5. Exit");
+		System.out.println("Select one menu between 1 - 5 : ");
 	}
 }	

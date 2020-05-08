@@ -2,7 +2,7 @@ package customer;
 
 import java.util.Scanner;
 
-public class Customer {
+public abstract class Customer implements CustomerInput{
 	protected CustomerKind kind = CustomerKind.Member; //부모 클래스 customer의 종류는 member로 설정.
 	protected String name; //protected를 사용하여 자식 클래스에서 이 변수들을 사용할 수 있게한다.
 	protected int id;
@@ -79,7 +79,42 @@ public class Customer {
 		this.period = period;
 	}
 
-	public void printInfo() {//CustomerManager class의 view customer에서 불러오기 위한 함수 선언.
+	public abstract void printInfo();
+	
+	
+	public void setCustomerID(Scanner input) {
+		System.out.print("Customer ID : ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
+	
+	public void setCustomerName(Scanner input) {
+		System.out.print("Customer Name : ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setCustomerPhone(Scanner input) {
+		System.out.print("Customer Name : ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setCustomerBook(Scanner input) {
+		String js = input.nextLine();
+		System.out.print("Borrowed Book Name : ");
+		String book = input.nextLine();
+		this.setBook(book);
+	} 
+	
+	public void setCustomerPeriod(Scanner input) {
+		String js = input.nextLine();
+		System.out.print("Loan Period : ");
+		String period = input.nextLine();
+		this.setPeriod(period);
+	}
+
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case Member:
@@ -95,30 +130,7 @@ public class Customer {
 			skind = "Family";
 			break;
 		default :
-			
 		}
-		System.out.println("kind : " + skind + " name : " + name + " id :" + id + " phone : " + phone + " book : " + book + " period : " + period);
-	}
-	public void getUserInput(Scanner input) { //고객정보 입력받을 함수 생성
-		System.out.print("Customer ID : ");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.print("Customer Name : ");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Phone number : ");
-		String phone = input.next();
-		this.setPhone(phone);
-		
-		String js = input.nextLine();
-		System.out.print("Borrowed Book Name : ");
-		String book = input.nextLine();
-		this.setBook(book);
-		
-		System.out.print("Loan Period : ");
-		String period = input.nextLine();
-		this.setPeriod(period);
+		return skind;
 	}
 }

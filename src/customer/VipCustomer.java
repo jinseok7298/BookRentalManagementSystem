@@ -10,20 +10,16 @@ public class VipCustomer extends Customer {
 	public VipCustomer(CustomerKind kind) { 
 		super(kind);
 	}
-
+	
 	public void getUserInput(Scanner input) {
-		System.out.print("Customer ID : ");
-		int id = input.nextInt();
-		this.setId(id);
+		setCustomerID(input);
+		setCustomerName(input);
+		setCustomerPhone(input);
+		setCustomerLimitBookwithYN(input);
+		setCustomerLongPeriodwithYN(input);
+	}
 
-		System.out.print("Customer Name : ");
-		String name = input.next();
-		this.setName(name);
-
-		System.out.print("Phone number : ");
-		String phone = input.next();
-		this.setPhone(phone);
-
+	public void setCustomerLimitBookwithYN(Scanner input) {
 		char answer = 'x'; 
 		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') { 
 			System.out.print("Do you want to borrow a limited edition book ? (Y/N)");
@@ -36,17 +32,16 @@ public class VipCustomer extends Customer {
 				break;
 			}
 			else if(answer == 'n' || answer == 'N') {
-				String js = input.nextLine();
-				System.out.print("Borrowed Book Name : ");
-				String book = input.nextLine();
-				this.setBook(book);
+				setCustomerBook(input);
 				break;
 			}
 			else {
 			}
 		}
-
-		answer = 'x'; 
+	}
+	
+	public void setCustomerLongPeriodwithYN(Scanner input) {
+		char answer = 'x'; 
 		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') { 
 			System.out.print("Do you want to borrow a book for a long time ? (Y/N)");
 			answer = input.next().charAt(0);
@@ -58,37 +53,17 @@ public class VipCustomer extends Customer {
 				break;
 			}
 			else if(answer == 'n' || answer == 'N') {
-				String js = input.nextLine();
-				System.out.print("Loan Period : ");
-				String period = input.nextLine();
-				this.setPeriod(period);
+				setCustomerPeriod(input);
 				break;
 			}
 			else {
 			}
 		}
-
-
 	}
-
+	
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Member:
-			skind = "Member";
-			break;
-		case Nonmember:
-			skind = "Nonmember";
-			break;
-		case Vip:
-			skind = "Vip";
-			break;
-		case Family:
-			skind = "Family";
-			break;
-		default :
-
-		}
+		String skind = getKindString();
 		System.out.println("kind : " + skind + " name : " + name + " id :" + id + " phone : " + phone + " book : " + book + " period : " + period + " limited book : " + limitedBook + " long period : " + longPeriod);
 	}
+
 }
