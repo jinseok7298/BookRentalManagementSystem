@@ -2,9 +2,9 @@ package customer;
 
 import java.util.Scanner;
 
-public abstract class SomeCustomer extends Customer {
+public abstract class NewCustomer extends Customer {
 
-	public SomeCustomer(CustomerKind kind) { 
+	public NewCustomer(CustomerKind kind) { 
 		super(kind);
 	}
 	
@@ -18,8 +18,8 @@ public abstract class SomeCustomer extends Customer {
 	}
 
 	public void setCustomerPhonewithYN(Scanner input) {
-		char answer = 'x'; //부모클래스와 차이점을 주기위해 만든 부분이다.
-		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') { //핸드폰 번호를 입력할지 말지 정한다.
+		char answer = 'x'; 
+		while(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') { 
 			System.out.print("Do you want to enter your phone number ? (Y/N)");
 			answer = input.next().charAt(0);
 			if(answer == 'y' || answer == 'Y') {

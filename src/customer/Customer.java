@@ -3,12 +3,12 @@ package customer;
 import java.util.Scanner;
 
 public abstract class Customer implements CustomerInput{
-	protected CustomerKind kind = CustomerKind.Member; //부모 클래스 customer의 종류는 member로 설정.
-	protected String name; //protected를 사용하여 자식 클래스에서 이 변수들을 사용할 수 있게한다.
+	protected CustomerKind kind = CustomerKind.Member; 
+	protected String name;
 	protected int id;
 	protected String phone;
 	protected String book;
-	protected String period; //customer의 정보로 입력한 값들을 저장받기 위한 변수들을 선언.
+	protected String period;
 	
 	public Customer() { 
 	}
@@ -28,10 +28,10 @@ public abstract class Customer implements CustomerInput{
 		this.id = id;
 		this.phone = phone;
 		this.book = book;
-		this.period = period; //변수 이름이 동일하여 this키워드 사용 메소드 내의 변수가 아닌 클래스의 변수를 호출하기 위해 사용한다.this 키워드는 선언된 클래스 자신을 가리킴.
+		this.period = period;
 	}
 	
-	public CustomerKind getKind() { //각각의 변수에 대한 캡슐화를 위해 getters와 setters를 만들어준다. 
+	public CustomerKind getKind() { 
 		return kind;
 	}
 
@@ -95,9 +95,9 @@ public abstract class Customer implements CustomerInput{
 	}
 	
 	public void setCustomerPhone(Scanner input) {
-		System.out.print("Customer Name : ");
-		String name = input.next();
-		this.setName(name);
+		System.out.print("Customer Phone Number : ");
+		String phone = input.next();
+		this.setPhone(phone);
 	}
 	
 	public void setCustomerBook(Scanner input) {
@@ -108,7 +108,6 @@ public abstract class Customer implements CustomerInput{
 	} 
 	
 	public void setCustomerPeriod(Scanner input) {
-		String js = input.nextLine();
 		System.out.print("Loan Period : ");
 		String period = input.nextLine();
 		this.setPeriod(period);

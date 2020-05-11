@@ -6,6 +6,14 @@ public class VipCustomer extends Customer {
 
 	protected String limitedBook;
 	protected String longPeriod;
+	
+	public void setLimitedBook(String limitedBook) {
+		this.limitedBook = limitedBook;
+	}
+
+	public void setLongPeriod(String longPeriod) {
+		this.longPeriod = longPeriod;
+	}
 
 	public VipCustomer(CustomerKind kind) { 
 		super(kind);
@@ -28,7 +36,7 @@ public class VipCustomer extends Customer {
 				String js = input.nextLine();
 				System.out.print("Borrowed limited edition book name : ");
 				String limitedBook = input.nextLine();
-				this.setBook(limitedBook);
+				this.setLimitedBook(limitedBook);
 				break;
 			}
 			else if(answer == 'n' || answer == 'N') {
@@ -49,7 +57,7 @@ public class VipCustomer extends Customer {
 				String js = input.nextLine();
 				System.out.print("Loan Long Period : ");
 				String longPeriod = input.nextLine();
-				this.setPeriod(longPeriod);
+				this.setLongPeriod(longPeriod);
 				break;
 			}
 			else if(answer == 'n' || answer == 'N') {

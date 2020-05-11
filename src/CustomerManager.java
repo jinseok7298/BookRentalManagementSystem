@@ -12,26 +12,26 @@ import customer.VipCustomer;
 public class CustomerManager {
 	ArrayList<CustomerInput> customers = new ArrayList<CustomerInput>();
 	Scanner input;
-	CustomerManager(Scanner input){// MenuManager class에서 선언했던  Scanner input값을 불러온다.
-		this.input = input; //불러온 input을 this.input으로 넣은 후 위에 선언된 input변수로 옮겨줌. 
-	}                       //따라서 Scanner input = new Scanner(System.in)을 새로 적어주는 일을 안 하게됨.
+	CustomerManager(Scanner input){
+		this.input = input; 
+	}                       
 	
-	public void addCustomer() { //Scanner을 위에서 선언했으므로 다시 안 써도 된다.
+	public void addCustomer() {
 		int kind = 0;
 		CustomerInput customerInput;
-		while(kind != 1 && kind != 2) { //Customer 클래스에 고객을 입력할지, NonMemberCustomer 클래스에 입력할지 결정.
+		while(kind != 1 && kind != 2 && kind != 3) {
 			System.out.println(" 1 for Member");
 			System.out.println(" 2 for Non-Member");
 			System.out.println(" 3 for Vip");
 			System.out.print("Select num 1, 2, or 3 for Customer kind : ");
 			kind = input.nextInt();
-			if (kind == 1) { //1번 선택시 kind가 member인 customer 클래스를 선택
+			if (kind == 1) { 
 				customerInput = new MemberCustomer(CustomerKind.Member);
 				customerInput.getUserInput(input);
-				customers.add(customerInput); //입력한 customer 값을 배열 customers에 저장.
+				customers.add(customerInput); 
 				break;
 			}
-			else if(kind == 2) { //2번 선택시 kind가 nonmember인 nonmembercustomer 클래스 선택.
+			else if(kind == 2) { 
 				customerInput = new NonMemberCustomer(CustomerKind.Nonmember);
 				customerInput.getUserInput(input);
 				customers.add(customerInput);
@@ -67,7 +67,7 @@ public class CustomerManager {
 	}
 	
 	public int removefromCustomers(int index, int customerid) {
-		if (index >= 0) { //입력했던 고객의 id가 일치해서 index에 i의 값이 저장될 시 실행하여 id일치하는 고객 삭제.
+		if (index >= 0) { 
 			customers.remove(index);
 			System.out.println("the customer" + customerid + "is deleted");
 			return 1;
@@ -80,9 +80,9 @@ public class CustomerManager {
 	
 	public void editCustomer() {
 		System.out.print("Customer ID : ");
-		int customerid = input.nextInt(); //새로 입력할 변수 선언.
-		for (int i = 0; i<customers.size(); i++) { //배열 크기만큼 반복문 실행.
-			CustomerInput customer = customers.get(i); //정보를 편집할 customer를 customers배열의 i번째의 customer로 저장.
+		int customerid = input.nextInt();
+		for (int i = 0; i<customers.size(); i++) { 
+			CustomerInput customer = customers.get(i);
 			if (customer.getId() == customerid) {
 				int num = -1;
 				while(num != 6) {
@@ -102,6 +102,7 @@ public class CustomerManager {
 						customer.setCustomerBook(input);
 						break;
 					case 5:
+						String js = input.nextLine();
 						customer.setCustomerPeriod(input);
 						break;
 					default:
@@ -115,7 +116,7 @@ public class CustomerManager {
 	public void viewCustomers() {
 		System.out.println("# of registered customers : " + customers.size());
 		for (int i = 0; i<customers.size(); i++) {
-			customers.get(i).printInfo(); //배열안에 있는 customer의 정보들을 출력.
+			customers.get(i).printInfo(); 
 		}
 	}
 	

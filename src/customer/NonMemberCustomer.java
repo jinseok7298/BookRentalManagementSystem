@@ -2,7 +2,7 @@ package customer;
 
 import java.util.Scanner;
 
-public class NonMemberCustomer extends SomeCustomer { 
+public class NonMemberCustomer extends NewCustomer { 
 	
 	public NonMemberCustomer(CustomerKind kind) { 
 		super(kind);
@@ -15,5 +15,5 @@ public class NonMemberCustomer extends SomeCustomer {
 		setCustomerBook(input);
 		setCustomerPeriod(input);
 	}
-
+	
 }
