@@ -2,6 +2,8 @@ package customer;
 
 import java.util.Scanner;
 
+import exception.PeriodFormatException;
+
 public abstract class Customer implements CustomerInput{
 	protected CustomerKind kind = CustomerKind.Member; 
 	protected String name;
@@ -75,7 +77,10 @@ public abstract class Customer implements CustomerInput{
 		return period;
 	}
 
-	public void setPeriod(String period) {
+	public void setPeriod(String period) throws PeriodFormatException {
+		if(!period.contains("~")) {
+			throw new PeriodFormatException();
+		}
 		this.period = period;
 	}
 
@@ -108,9 +113,16 @@ public abstract class Customer implements CustomerInput{
 	} 
 	
 	public void setCustomerPeriod(Scanner input) {
-		System.out.print("Loan Period : ");
-		String period = input.nextLine();
-		this.setPeriod(period);
+		String period = "";
+		while (!period.contains("~")) {
+			System.out.print("Loan Period : ");
+			period = input.nextLine();
+			try {
+				this.setPeriod(period);
+			} catch (PeriodFormatException e) {
+				System.out.println("Incorrect Period Format. Put the loan period that contains '~'");
+			}
+		}
 	}
 
 	public String getKindString() {

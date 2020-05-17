@@ -2,6 +2,8 @@ package customer;
 
 import java.util.Scanner;
 
+import exception.PeriodFormatException;
+
 public interface CustomerInput {
 	
 	public int getId();
@@ -14,7 +16,7 @@ public interface CustomerInput {
 	
 	public void setBook(String book);
 	
-	public void setPeriod(String period);
+	public void setPeriod(String period) throws PeriodFormatException;
 	
 	public void getUserInput(Scanner input);
 	

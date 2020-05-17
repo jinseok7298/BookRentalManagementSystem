@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import customer.Customer;
@@ -20,31 +21,40 @@ public class CustomerManager {
 		int kind = 0;
 		CustomerInput customerInput;
 		while(kind != 1 && kind != 2 && kind != 3) {
-			System.out.println(" 1 for Member");
-			System.out.println(" 2 for Non-Member");
-			System.out.println(" 3 for Vip");
-			System.out.print("Select num 1, 2, or 3 for Customer kind : ");
-			kind = input.nextInt();
-			if (kind == 1) { 
-				customerInput = new MemberCustomer(CustomerKind.Member);
-				customerInput.getUserInput(input);
-				customers.add(customerInput); 
-				break;
+			try {
+				System.out.println(" 1 for Member");
+				System.out.println(" 2 for Non-Member");
+				System.out.println(" 3 for Vip");
+				System.out.print("Select num 1, 2, or 3 for Customer kind : ");
+				kind = input.nextInt();
+				if (kind == 1) { 
+					customerInput = new MemberCustomer(CustomerKind.Member);
+					customerInput.getUserInput(input);
+					customers.add(customerInput); 
+					break;
+				}
+				else if(kind == 2) { 
+					customerInput = new NonMemberCustomer(CustomerKind.Nonmember);
+					customerInput.getUserInput(input);
+					customers.add(customerInput);
+					break;
+				}
+				else if(kind == 3) { 
+					customerInput = new VipCustomer(CustomerKind.Vip);
+					customerInput.getUserInput(input);
+					customers.add(customerInput);
+					break;
+				}
+				else {
+					System.out.println("Select num for Customer kind between 1 and 3! ");
+				}
 			}
-			else if(kind == 2) { 
-				customerInput = new NonMemberCustomer(CustomerKind.Nonmember);
-				customerInput.getUserInput(input);
-				customers.add(customerInput);
-				break;
-			}
-			else if(kind == 3) { 
-				customerInput = new VipCustomer(CustomerKind.Vip);
-				customerInput.getUserInput(input);
-				customers.add(customerInput);
-				break;
-			}
-			else {
-				System.out.print("Select num for Customer kind between 1 and 2 : ");
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 3!");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}

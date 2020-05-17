@@ -2,6 +2,8 @@ package customer;
 
 import java.util.Scanner;
 
+import exception.PeriodFormatException;
+
 public class VipCustomer extends Customer {
 
 	protected String limitedBook;
@@ -11,7 +13,10 @@ public class VipCustomer extends Customer {
 		this.limitedBook = limitedBook;
 	}
 
-	public void setLongPeriod(String longPeriod) {
+	public void setLongPeriod(String longPeriod) throws PeriodFormatException {
+		if(!longPeriod.contains("~")) {
+			throw new PeriodFormatException();
+		}
 		this.longPeriod = longPeriod;
 	}
 
@@ -54,13 +59,21 @@ public class VipCustomer extends Customer {
 			System.out.print("Do you want to borrow a book for a long time ? (Y/N)");
 			answer = input.next().charAt(0);
 			if(answer == 'y' || answer == 'Y') {
+				String longPeriod = "";
 				String js = input.nextLine();
-				System.out.print("Loan Long Period : ");
-				String longPeriod = input.nextLine();
-				this.setLongPeriod(longPeriod);
+				while (!longPeriod.contains("~")) {
+					System.out.print("Loan Long Period : ");
+					longPeriod = input.nextLine();
+					try {
+						this.setLongPeriod(longPeriod);
+					} catch (PeriodFormatException e) {
+						System.out.println("Incorrect Period Format. Put the loan period that contains '~'");
+					}
+				}
 				break;
 			}
 			else if(answer == 'n' || answer == 'N') {
+				String js = input.nextLine();
 				setCustomerPeriod(input);
 				break;
 			}
