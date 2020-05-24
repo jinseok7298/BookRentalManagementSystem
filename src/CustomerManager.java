@@ -1,8 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import customer.Customer;
 import customer.CustomerInput;
 import customer.CustomerKind;
 import customer.MemberCustomer;
@@ -10,12 +10,21 @@ import customer.NonMemberCustomer;
 import customer.VipCustomer;
 
 
-public class CustomerManager {
+public class CustomerManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7230914715683316332L;
+	
 	ArrayList<CustomerInput> customers = new ArrayList<CustomerInput>();
-	Scanner input;
+	transient Scanner input;
 	CustomerManager(Scanner input){
 		this.input = input; 
-	}                       
+	}
+	
+	public void setScanner(Scanner input) {
+		this.input = input;
+	}
 	
 	public void addCustomer() {
 		int kind = 0;

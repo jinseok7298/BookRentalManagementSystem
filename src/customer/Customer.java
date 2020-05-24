@@ -1,10 +1,16 @@
 package customer;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.PeriodFormatException;
 
-public abstract class Customer implements CustomerInput{
+public abstract class Customer implements CustomerInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6171769116200803795L;
+	
 	protected CustomerKind kind = CustomerKind.Member; 
 	protected String name;
 	protected int id;
