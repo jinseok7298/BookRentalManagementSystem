@@ -10,11 +10,19 @@ public interface CustomerInput {
 	
 	public void setId(int id);
 	
+	public String getName();
+	
 	public void setName(String name);
+	
+	public String getPhone();
 	
 	public void setPhone(String phone);
 	
+	public String getBook();
+	
 	public void setBook(String book);
+	
+	public String getPeriod();
 	
 	public void setPeriod(String period) throws PeriodFormatException;
 	

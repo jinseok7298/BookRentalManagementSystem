@@ -1,18 +1,23 @@
-package gui;
+ package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import manager.CustomerManager;
+
 public class WindowFrame extends JFrame {
+	
+	CustomerManager customerManager;
 	
 	MenuSelection menuselection;
 	CustomerAdder customeradder;
 	CustomerViewer customerviewer;
 	
-	public WindowFrame() {
+	public WindowFrame(CustomerManager customerManager) {
+		this.customerManager = customerManager;
 		this.menuselection = new MenuSelection(this);
 		this.customeradder = new CustomerAdder(this);
-		this.customerviewer = new CustomerViewer(this);
+		this.customerviewer = new CustomerViewer(this, this.customerManager);
 		
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,6 +57,5 @@ public class WindowFrame extends JFrame {
 	public void setCustomerviewer(CustomerViewer customerviewer) {
 		this.customerviewer = customerviewer;
 	}
-
 
 }

@@ -1,8 +1,10 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import customer.Customer;
 import customer.CustomerInput;
 import customer.CustomerKind;
 import customer.MemberCustomer;
@@ -138,6 +140,15 @@ public class CustomerManager implements Serializable {
 			customers.get(i).printInfo(); 
 		}
 	}
+	
+	public int size() {
+		return customers.size();
+	}
+	
+	public CustomerInput get(int index) {
+		return (Customer) customers.get(index);
+	}
+	
 	
 	public void showEditMenu() {
 		System.out.println("~ Customer Info Edit Menu ~");
